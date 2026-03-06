@@ -28,14 +28,7 @@ export function ContactForm() {
     }
 
     const subject = encodeURIComponent(`Website inquiry from ${name}`);
-    const body = encodeURIComponent(
-      [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        "",
-        message
-      ].join("\n")
-    );
+    const body = encodeURIComponent([`Name: ${name}`, `Email: ${email}`, "", message].join("\n"));
 
     window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
     setStatus(`Opening your email client to send this message to ${contactEmail}.`);
