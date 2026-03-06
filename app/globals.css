@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #07111f;
+  --bg-soft: #0d1b2b;
+  --panel: rgba(12, 25, 40, 0.82);
+  --panel-strong: #11233a;
+  --text: #eef4fb;
+  --muted: #a4b3c6;
+  --line: rgba(177, 196, 219, 0.16);
+  --accent: #7dd3a6;
+  --accent-strong: #4eb384;
+  --warn: #ffd58a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(54, 109, 169, 0.22), transparent 32%),
+    radial-gradient(circle at top right, rgba(125, 211, 166, 0.12), transparent 26%),
+    linear-gradient(180deg, #07111f 0%, #091728 42%, #060d18 100%);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(125, 211, 166, 0.24);
+}
+
+.shell {
+  position: relative;
+}
+
+.shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 85%);
+}
+
+.type-ui {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 60px rgba(2, 7, 15, 0.25);
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.prose-copy p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.prose-copy strong {
+  color: var(--text);
+}
