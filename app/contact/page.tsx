@@ -23,14 +23,19 @@ export default function ContactPage() {
                 github.com/derrickSh43
               </Link>
             </p>
-            <p>LinkedIn and email can be added from verified contact details before deployment.</p>
-            <p>The current sources did not include a publish-ready public email address, so the site does not invent one.</p>
+            <p>
+              Email:{" "}
+              <Link className="text-[var(--accent)]" href="mailto:d.w.engineer@proton.me">
+                d.w.engineer@proton.me
+              </Link>
+            </p>
+            <p>LinkedIn can be added once you want it exposed publicly on the site.</p>
           </div>
         </article>
         <article className="card rounded-[2rem] p-6 md:p-8">
-          <h3 className="text-2xl">Secure inquiry form</h3>
+          <h3 className="text-2xl">Email inquiry form</h3>
           <p className="mt-4 text-sm leading-7 text-[var(--muted)]">
-            This form posts to a server-side route with validation, rate limiting, and a honeypot field. It currently logs the inquiry server-side so the delivery provider can be added later without exposing secrets.
+            This form composes a message to your Proton address in the visitor's email client. It avoids frontend secrets and works without wiring a transactional email provider.
           </p>
           <div className="mt-6">
             <ContactForm />

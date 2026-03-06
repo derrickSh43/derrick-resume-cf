@@ -2,34 +2,43 @@
 
 import { FormEvent, useState } from "react";
 
+const contactEmail = "d.w.engineer@proton.me";
+
 export function ContactForm() {
   const [status, setStatus] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setLoading(true);
     setStatus(null);
 
     const form = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(form.entries());
+    const name = String(form.get("name") ?? "").trim();
+    const email = String(form.get("email") ?? "").trim();
+    const message = String(form.get("message") ?? "").trim();
+    const honeypot = String(form.get("company") ?? "").trim();
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      const data = await response.json();
-      setStatus(data.message ?? data.error ?? "Request completed.");
-      if (response.ok) {
-        event.currentTarget.reset();
-      }
-    } catch {
-      setStatus("Contact submission failed. Please try again later.");
-    } finally {
-      setLoading(false);
+    if (honeypot) {
+      setStatus("Submission blocked.");
+      return;
     }
+
+    if (!name || !email || !message) {
+      setStatus("Name, email, and message are required.");
+      return;
+    }
+
+    const subject = encodeURIComponent(`Website inquiry from ${name}`);
+    const body = encodeURIComponent(
+      [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        "",
+        message
+      ].join("\n")
+    );
+
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+    setStatus(`Opening your email client to send this message to ${contactEmail}.`);
   }
 
   return (
@@ -65,10 +74,9 @@ export function ContactForm() {
       />
       <button
         type="submit"
-        disabled={loading}
         className="type-ui rounded-full bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-[#07111f] disabled:opacity-60"
       >
-        {loading ? "Sending..." : "Send inquiry"}
+        Compose Email
       </button>
       {status ? <p className="text-sm leading-6 text-[var(--muted)]">{status}</p> : null}
     </form>
