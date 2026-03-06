@@ -39,7 +39,7 @@ export const profile = {
   role: "AI Security, AI Infrastructure, and AI Governance Architect",
   headline:
     "Designing deterministic, production-ready AI systems with strong identity, containment, cost, and policy controls.",
-  location: "Houston, Texas, United States",
+  citizenship: "US citizen",
   github: "https://github.com/derrickSh43",
   heroPoints: [
     "AI control planes and governed RAG release pipelines",

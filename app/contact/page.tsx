@@ -18,18 +18,12 @@ export default function ContactPage() {
           <h3 className="text-2xl">Primary links</h3>
           <div className="mt-6 space-y-4 text-sm leading-7 text-[var(--muted)]">
             <p>
-              GitHub:{" "}
-              <Link className="text-[var(--accent)]" href="https://github.com/derrickSh43">
-                github.com/derrickSh43
+              LinkedIn:{" "}
+              <Link className="text-[var(--accent)]" href="https://www.linkedin.com/in/derrick-w-11726253/">
+                linkedin.com/in/derrick-w-11726253
               </Link>
             </p>
-            <p>
-              Email:{" "}
-              <Link className="text-[var(--accent)]" href="mailto:d.w.engineer@proton.me">
-                d.w.engineer@proton.me
-              </Link>
-            </p>
-            <p>LinkedIn can be added once you want it exposed publicly on the site.</p>
+            <p>The contact form below opens a pre-addressed email draft without exposing the address directly on the page.</p>
           </div>
         </article>
         <article className="card rounded-[2rem] p-6 md:p-8">

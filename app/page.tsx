@@ -34,7 +34,7 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          <p className="type-ui mt-6 text-sm text-[var(--muted)]">{profile.location}</p>
+          <p className="type-ui mt-6 text-sm text-[var(--muted)]">{profile.citizenship}</p>
         </div>
       </section>
 
